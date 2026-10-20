@@ -1,0 +1,556 @@
+
+:root {
+  --green: #103d2b;
+  --green-light: #1c6242;
+  --gold: #efc45b;
+  --light: #f2f6f2;
+  --text: #26352b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--green);
+  color: white;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.brand img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+.brand small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+#menuToggle {
+  display: none;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 6px 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  color: white;
+  text-align: center;
+  padding: 95px 8%;
+}
+
+.hero h1 {
+  max-width: 850px;
+  margin: 20px auto;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.2;
+}
+
+.hero h2 {
+  color: var(--gold);
+  font-size: 30px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.gold {
+  color: #a77918;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero .gold {
+  color: var(--gold);
+}
+
+.button {
+  display: inline-block;
+  margin: 8px 5px;
+  padding: 12px 20px;
+  background: var(--gold);
+  color: var(--green);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.outline {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.section {
+  padding: 65px 8%;
+  text-align: center;
+}
+
+.section h2,
+.contact h2 {
+  color: var(--green);
+  font-size: 32px;
+  margin-top: 5px;
+}
+
+.light {
+  background: var(--light);
+}
+
+.intro {
+  max-width: 850px;
+  margin: 20px auto;
+  font-size: 17px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e1e8e2;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 14px #00000008;
+  min-width: 0;
+}
+
+.card h3 {
+  color: var(--green);
+}
+
+.card p {
+  color: #647268;
+}
+
+.executive {
+  padding: 0 0 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.executive img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #e3e9e4;
+}
+
+.executive h3 {
+  padding: 0 12px;
+  margin-bottom: 5px;
+}
+
+.position {
+  color: #98721c !important;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.note {
+  font-size: 12px;
+  color: #6c776f;
+}
+
+.gallery figure {
+  margin: 0;
+  padding: 0 0 12px;
+  overflow: hidden;
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  background: #e3e9e4;
+}
+
+.gallery figcaption {
+  padding: 12px 15px 0;
+  font-weight: bold;
+}
+
+.contact {
+  padding: 65px 8%;
+  text-align: center;
+  background: #edf3ed;
+}
+
+.contact > p:not(.gold):not(.note) {
+  max-width: 650px;
+  margin: 15px auto;
+}
+
+footer {
+  background: #09291c;
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+}
+
+footer h3 {
+  color: var(--gold);
+}
+
+footer p {
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  #menuToggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    padding: 5px 0;
+    font-size: 15px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .section {
+    padding: 50px 6%;
+  }
+
+  .hero {
+    padding: 65px 6%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+}
+.event-photo img {
+  width: 100%;
+  max-width: 280px;
+  height: 380px;
+  object-fit: contain;
+  display: block;
+  margin: 15px auto;
+  border-radius: 8px;
+}
+
+/* PROFESSIONAL NAPS HEADER */
+.naps-header {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.header-main {
+  background: #075b3b;
+  padding: 18px 5%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.brand-text h1 {
+  color: #ffffff;
+  font-size: clamp(17px, 2.4vw, 25px);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.brand-text h2 {
+  color: #e3c56b;
+  font-size: 17px;
+  margin: 5px 0;
+}
+
+.brand-text p {
+  color: #ffffff;
+  font-size: 13px;
+  margin: 0;
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 4%;
+  border-bottom: 3px solid #c5a044;
+}
+
+.main-navigation a {
+  color: #173c2b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 13px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.main-navigation a:hover {
+  background: #eaf3ed;
+  color: #075b3b;
+}
+
+.header-ticker {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f4f6f3;
+  color: #075b3b;
+  padding: 12px 5%;
+  overflow: hidden;
+}
+
+.header-ticker strong {
+  background: #c5a044;
+  color: #173c2b;
+  padding: 7px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.ticker-window {
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.ticker-window span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: napsTicker 22s linear infinite;
+  font-size: 13px;
+}
+
+@keyframes napsTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-main {
+    padding: 15px;
+  }
+
+  .brand {
+    gap: 12px;
+  }
+
+  .brand-logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .brand-text h2 {
+    font-size: 15px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
+  }
+
+  .main-navigation {
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .main-navigation a {
+    font-size: 12px;
+    padding: 9px 8px;
+  }
+
+  .header-ticker {
+    gap: 8px;
+    padding: 10px;
+  }
+}
+
+.connect-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f4f7f4;
+}
+
+.connect-section h2 {
+  color: #075b3b;
+  margin-bottom: 12px;
+}
+
+.connect-section p {
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.connect-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.connect-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.connect-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-3px);
+}
+
+.tiktok { background: #111111; }
+.x-social { background: #000000; }
+.facebook { background: #1877F2; }
+.whatsapp { background: #25D366; color: #073b20; }
+
+@media (max-width: 480px) {
+  .connect-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Meet the Executives - Light Gold Background */
+.leadership-section {
+  background-color: #F9E7A2;
+  padding: 50px 20px;
+}
+
+#executives {
+  background-color: #F9E7A2;
+}
+
+/* Light gold background for Photo Gallery */
+#gallery {
+  background-color: #F9E7A2;
+}
+
+/* Light green background for News and Announcements */
+#news {
+  background-color: #DDF2E1;
+}
