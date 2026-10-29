@@ -735,3 +735,75 @@ a.button:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===================================
+   NAPS WEBSITE ANIMATION UPGRADE
+=================================== */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animate the main page sections */
+@keyframes napsFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Entrance animation for the page heading */
+h1 {
+  animation: napsFadeUp 0.9s ease-out both;
+}
+
+/* Smooth hover effects for cards */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+/* Images gently zoom when visitors hover */
+img {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+img:hover {
+  filter: brightness(1.04);
+}
+
+/* Buttons and links animate smoothly */
+button,
+.btn,
+a.button {
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+button:hover,
+.btn:hover,
+a.button:hover {
+  transform: translateY(-2px);
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
