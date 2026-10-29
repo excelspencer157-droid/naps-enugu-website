@@ -672,3 +672,66 @@ footer p {
   font-size: 42px;
   cursor: pointer;
 }
+
+/* ==================================
+   NAPS WEBSITE ANIMATIONS
+================================== */
+
+/* Smooth scrolling between sections */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth card hover effects */
+.card {
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Smooth image hover effects */
+.event-photo img,
+#news .card img,
+.gallery img {
+  transition: transform 0.35s ease,
+              filter 0.35s ease;
+}
+
+.event-photo img:hover,
+#news .card img:hover,
+.gallery img:hover {
+  filter: brightness(1.04);
+}
+
+/* Button hover effects */
+button,
+.btn,
+a.button {
+  transition: background-color 0.25s ease,
+              color 0.25s ease,
+              transform 0.25s ease;
+}
+
+button:hover,
+.btn:hover,
+a.button:hover {
+  transform: translateY(-2px);
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
