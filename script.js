@@ -19,7 +19,7 @@ if (navigation) {
   });
 }
 
-/* Make all website images clickable and enlarge them */
+// Website image lightbox
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll("img");
 
@@ -67,10 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/* =====================================
-   NAPS ENTRANCE AND SCROLL ANIMATIONS
-===================================== */
-
+// Entrance and scroll animations
 document.addEventListener("DOMContentLoaded", function () {
   const items = document.querySelectorAll(
     "section h2, .event-description, .event-photo, #news .card, .card"
@@ -78,76 +75,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
   items.forEach(function (item, index) {
     item.classList.add("naps-entrance");
-
-    item.style.setProperty(
-      "--naps-delay",
-      (index % 6) * 100 + "ms"
-    );
+    item.style.setProperty("--naps-delay", (index % 6) * 100 + "ms");
   });
 
-  const observer = new IntersectionObserver(
-    function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("naps-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.12
-    }
-  );
+  if (!("IntersectionObserver" in window)) {
+    items.forEach(function (item) {
+      item.classList.add("naps-visible");
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("naps-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
 
   items.forEach(function (item) {
     observer.observe(item);
   });
 });
-/* NAPS Continuous Homepage Typing Effects */
+
+// Continuous typing effect for the homepage hero only
 document.addEventListener("DOMContentLoaded", function () {
   const lines = document.querySelectorAll("#home .typing-line");
 
   if (!lines.length) return;
 
-  lines.forEach(function (line, position) {
-    const text = line.dataset.text;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (reducedMotion) return;
+
+  const pauseAtEnd = 1400;
+  const pauseAtStart = 250;
+
+  function runLine(position) {
+    const line = lines[position];
+
+    if (!line) {
+      setTimeout(function () {
+        runLine(0);
+      }, 600);
+      return;
+    }
+
+    const text = line.dataset.text || line.textContent.trim();
     let index = 0;
     let deleting = false;
 
     line.textContent = "";
-    line.style.borderRight = "3px solid #efc45b";
-    line.style.display = "table";
-    line.style.maxWidth = "100%";
+    line.classList.add("typing-active");
 
-    function typeLoop() {
+    function step() {
       if (!deleting) {
         index++;
         line.textContent = text.slice(0, index);
 
         if (index >= text.length) {
           deleting = true;
-          setTimeout(typeLoop, 1800);
+          setTimeout(step, pauseAtEnd);
           return;
         }
 
-        setTimeout(typeLoop, 65);
+        setTimeout(step, 45);
       } else {
         index--;
         line.textContent = text.slice(0, index);
 
         if (index <= 0) {
-          deleting = false;
-          setTimeout(typeLoop, 400);
+          line.classList.remove("typing-active");
+
+          setTimeout(function () {
+            runLine((position + 1) % lines.length);
+          }, pauseAtStart);
           return;
         }
 
-        setTimeout(typeLoop, 30);
+        setTimeout(step, 20);
       }
     }
 
-    setTimeout(typeLoop, position * 700);
-  });
-});
+    step();
+  }
 
-  typeNextLetter();
+  runLine(0);
 });
