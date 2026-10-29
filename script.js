@@ -66,3 +66,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+/* =====================================
+   NAPS ENTRANCE AND SCROLL ANIMATIONS
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const items = document.querySelectorAll(
+    "section h2, .event-description, .event-photo, #news .card, .card"
+  );
+
+  items.forEach(function (item, index) {
+    item.classList.add("naps-entrance");
+
+    item.style.setProperty(
+      "--naps-delay",
+      (index % 6) * 100 + "ms"
+    );
+  });
+
+  const observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("naps-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  items.forEach(function (item) {
+    observer.observe(item);
+  });
+});
