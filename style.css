@@ -1235,3 +1235,24 @@ nav a {
   margin-right: auto;
   overflow-wrap: anywhere;
 }
+/* Continuous typing cursor */
+#home .typing-line {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  border-right: 3px solid #efc45b;
+  padding-right: 4px;
+  animation: napsCursorBlink 0.7s step-end infinite;
+}
+
+@keyframes napsCursorBlink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Mobile typing text */
+@media (max-width: 600px) {
+  #home .typing-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+}
