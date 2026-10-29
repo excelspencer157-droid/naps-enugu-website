@@ -1175,3 +1175,49 @@ nav a {
     border-radius: 18px;
   }
 }
+
+/* NAPS homepage typing effect */
+.hero .typing-title {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: anywhere;
+  border-right: 3px solid #efc45b;
+  animation: napsTyping 4s steps(38, end) both,
+             napsCaret 0.75s step-end infinite;
+}
+
+/* Reveal the heading from left to right */
+@keyframes napsTyping {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Blinking gold cursor */
+@keyframes napsCaret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Fit smaller screens */
+@media (max-width: 600px) {
+  .hero .typing-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero .typing-title {
+    animation: none;
+    border-right: none;
+    clip-path: none;
+  }
+}
