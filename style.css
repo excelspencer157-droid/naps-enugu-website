@@ -1047,3 +1047,59 @@ nav {
     transition: none;
   }
 }
+
+/* NAPS: Visible glass panel on homepage */
+#home {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Glass layer behind the homepage content */
+#home::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 1000px);
+  height: 82%;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.10),
+    rgba(255, 255, 255, 0.025)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 28px;
+
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Restore a clearer navigation bar */
+nav {
+  background: #ffffff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Keep navigation text readable */
+nav a {
+  color: #103d2b;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+  #home::before {
+    width: 92%;
+    height: 88%;
+    border-radius: 18px;
+  }
+}
