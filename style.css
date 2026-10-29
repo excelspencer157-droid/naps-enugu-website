@@ -1256,3 +1256,33 @@ nav a {
     font-size: clamp(1.5rem, 6vw, 2.2rem);
   }
 }
+
+/* Stable continuous typing effect: homepage hero only */
+.hero#home .typing-line {
+  display: table;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: anywhere;
+  clip-path: none;
+  animation: none;
+  border-right: 3px solid transparent;
+  padding-right: 4px;
+}
+
+.hero#home .typing-line.typing-active {
+  border-right-color: #efc45b;
+}
+
+.hero#home .typing-title {
+  font-size: clamp(1.5rem, 5vw, 3.25rem);
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero#home .typing-line {
+    display: block;
+    border-right: none;
+  }
+}
