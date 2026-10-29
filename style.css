@@ -832,3 +832,64 @@ a.button:hover {
     transition: none;
   }
 }
+
+/* =====================================
+   NAPS HERO AND GOLD ACCENT ANIMATIONS
+===================================== */
+
+/* Gentle glow for gold text */
+@keyframes napsGoldGlow {
+  0%, 100% {
+    text-shadow: 0 0 0 rgba(239, 196, 91, 0);
+  }
+  50% {
+    text-shadow: 0 0 14px rgba(239, 196, 91, 0.45);
+  }
+}
+
+/* Floating effect */
+@keyframes napsFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Gold headings */
+.gold {
+  animation: napsGoldGlow 3s ease-in-out infinite;
+}
+
+/* Main homepage heading */
+h1 {
+  animation:
+    napsFadeUp 0.9s ease-out both,
+    napsGoldGlow 3s ease-in-out 1s infinite;
+}
+
+/* Give buttons a polished hover effect */
+button:hover,
+.btn:hover,
+a.button:hover {
+  box-shadow: 0 6px 18px rgba(239, 196, 91, 0.28);
+}
+
+/* Gently float the event flyers */
+.event-photo img {
+  animation: napsFloat 4s ease-in-out infinite;
+}
+
+.event-photo img:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+/* Reduce motion when requested */
+@media (prefers-reduced-motion: reduce) {
+  .gold,
+  h1,
+  .event-photo img {
+    animation: none !important;
+  }
+}
