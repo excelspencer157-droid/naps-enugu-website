@@ -937,3 +937,41 @@ nav {
   border-color: #efc45b;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
+
+/* NAPS HOMEPAGE GLASS EFFECT */
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Frosted glass panel for homepage content */
+#home .hero-content,
+#home .hero-text {
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 22px;
+  padding: 30px;
+  max-width: 900px;
+  margin: 20px auto;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Translucent homepage buttons */
+#home .btn,
+#home a.button {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+#home .btn:hover,
+#home a.button:hover {
+  background: rgba(239, 196, 91, 0.20);
+  border-color: #efc45b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
