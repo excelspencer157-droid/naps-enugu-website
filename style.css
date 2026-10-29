@@ -1221,3 +1221,17 @@ nav a {
     clip-path: none;
   }
 }
+@keyframes napsTypingCursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.hero .typing-title {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: anywhere;
+}
