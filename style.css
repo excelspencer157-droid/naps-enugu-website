@@ -554,3 +554,83 @@ footer p {
 #news {
   background-color: #DDF2E1;
 }
+
+/* NAPS News and Announcements */
+#news .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+#news .card {
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+#news .card img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+#news .card h3 {
+  color: #103d2b;
+  font-size: 19px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+#news .card p {
+  line-height: 1.7;
+}
+
+#news .card details {
+  margin-top: 14px;
+}
+
+#news .card summary {
+  display: inline-block;
+  cursor: pointer;
+  background: #103d2b;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  list-style: none;
+}
+
+#news .card summary::-webkit-details-marker {
+  display: none;
+}
+
+#news .card summary:hover {
+  background: #1c6242;
+}
+
+#news .card details[open] summary {
+  background: #efc45b;
+  color: #103d2b;
+}
+
+#news .card details p {
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  #news .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #news .card img {
+    height: 250px;
+  }
+}
