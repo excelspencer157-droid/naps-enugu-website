@@ -103,28 +103,51 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(item);
   });
 });
-/* NAPS Homepage Typing Effect */
+/* NAPS Continuous Homepage Typing Effects */
 document.addEventListener("DOMContentLoaded", function () {
-  const title = document.querySelector(".typing-title");
+  const lines = document.querySelectorAll("#home .typing-line");
 
-  if (!title) return;
+  if (!lines.length) return;
 
-  const text = "National Association of Polytechnic Students";
+  lines.forEach(function (line, position) {
+    const text = line.dataset.text;
+    let index = 0;
+    let deleting = false;
 
-  title.textContent = "";
-  title.style.borderRight = "3px solid #efc45b";
+    line.textContent = "";
+    line.style.borderRight = "3px solid #efc45b";
+    line.style.display = "table";
+    line.style.maxWidth = "100%";
 
-  let index = 0;
+    function typeLoop() {
+      if (!deleting) {
+        index++;
+        line.textContent = text.slice(0, index);
 
-  function typeNextLetter() {
-    if (index < text.length) {
-      title.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeNextLetter, 80);
-    } else {
-      title.style.animation = "napsTypingCursor 0.8s step-end infinite";
+        if (index >= text.length) {
+          deleting = true;
+          setTimeout(typeLoop, 1800);
+          return;
+        }
+
+        setTimeout(typeLoop, 65);
+      } else {
+        index--;
+        line.textContent = text.slice(0, index);
+
+        if (index <= 0) {
+          deleting = false;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+
+        setTimeout(typeLoop, 30);
+      }
     }
-  }
+
+    setTimeout(typeLoop, position * 700);
+  });
+});
 
   typeNextLetter();
 });
