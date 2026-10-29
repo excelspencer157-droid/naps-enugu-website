@@ -103,3 +103,28 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(item);
   });
 });
+/* NAPS Homepage Typing Effect */
+document.addEventListener("DOMContentLoaded", function () {
+  const title = document.querySelector(".typing-title");
+
+  if (!title) return;
+
+  const text = "National Association of Polytechnic Students";
+
+  title.textContent = "";
+  title.style.borderRight = "3px solid #efc45b";
+
+  let index = 0;
+
+  function typeNextLetter() {
+    if (index < text.length) {
+      title.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeNextLetter, 80);
+    } else {
+      title.style.animation = "napsTypingCursor 0.8s step-end infinite";
+    }
+  }
+
+  typeNextLetter();
+});
